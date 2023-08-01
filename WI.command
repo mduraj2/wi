@@ -4,7 +4,7 @@
 # Purpose: Connecting to Shared drive to get the WI
 # Author: Miroslaw Duraj
 # Date: 30/Nov/2021
-$version = '-1.5';
+$version = '-1.6';
 
 #use strict;
 use Term::ANSIColor;
@@ -25,6 +25,7 @@ $dsn0 = "DBI:mysql:general:172.30.1.199";
 
 $username = 'p3user';
 $password = 'p3user';
+$ipAddress = '172.30.1.199';
 
 ######################################################################
 
@@ -64,7 +65,7 @@ while (1)
 	print "WI mapping$version - $station\n";
 	print color('reset');
 
-    $path = 'smb://172.30.1.199/MNF-WIs/'."$product/$mode/$path";
+    $path = "smb://$ipAddress/MNF-WIs/"."$product/$mode/$path";
     $fullPath = '/usr/bin/osascript -e \'mount volume '."\"$path\"".'\'';
 	
 	system "$fullPath";
